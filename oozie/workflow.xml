@@ -94,15 +94,6 @@
 
     <action name="scrap_to_file">
         <shell xmlns="uri:oozie:shell-action:0.2">
-            <job-tracker>${clusterJobtracker}</job-tracker>
-            <name-node>${clusterNamenode}</name-node>
-            <configuration>
-                <property>
-                    <name>mapred.job.queue.name</name>
-                    <value>${jobQueue}</value>
-                </property>
-            </configuration>
-
             <exec>python</exec> <!-- python2 if necessary -->
             <argument>-m</argument>
             <argument>scrapper</argument>

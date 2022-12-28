@@ -93,10 +93,11 @@
     <start to="scrap_to_file"/>
 
     <action name="scrap_to_file">
-        <shell xmlns="uri:oozie:shell-action:0.2">
+        <shell xmlns="uri:oozie:shell-action:0.1">
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>		
-            <exec>echo "hello"</exec> 	
+            <exec>echo</exec>
+			<argument>hello</argument>
             <capture-output/>
         </shell>
         <ok to="end"/>

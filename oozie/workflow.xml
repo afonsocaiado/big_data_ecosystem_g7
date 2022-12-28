@@ -96,8 +96,8 @@
         <shell xmlns="uri:oozie:shell-action:0.1">
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>		
-            <exec>echo</exec>
-			<argument>hello</argument>
+            <exec>touch</exec>
+			<argument>hello.py</argument>
             <capture-output/>
         </shell>
         <ok to="end"/>

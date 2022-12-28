@@ -97,7 +97,6 @@
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>		
             <exec>touch</exec>
-			<argument>hello.py</argument>
 			<file>hdfs://au/user/${clusterUsername}/oozie/hello.py</file>
             <capture-output/>
         </shell>

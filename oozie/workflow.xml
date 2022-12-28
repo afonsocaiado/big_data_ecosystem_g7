@@ -96,8 +96,8 @@
         <shell xmlns="uri:oozie:shell-action:0.2">
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>		
-            <exec>touch</exec>
-			<file>hdfs://au/user/${clusterUsername}/oozie/hello.py</file>
+            <exec>python</exec>
+			<file>hdfs://au/user/${clusterUsername}/oozie/scripts/scrapper.py</file>
             <capture-output/>
         </shell>
         <ok to="end"/>

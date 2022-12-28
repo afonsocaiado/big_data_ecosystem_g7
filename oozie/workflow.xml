@@ -96,8 +96,13 @@
         <shell xmlns="uri:oozie:shell-action:0.2">
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>
-
-
+			<configuration>
+            <property>
+                <name>mapred.job.queue.name</name>
+                <value>${queueName}</value>
+            </property>
+        </configuration>
+			
             <exec>python</exec> <!-- python2 if necessary -->
             <argument>-m</argument>
             <argument>scrapper</argument>
@@ -109,7 +114,7 @@
     </action>
 
     <kill name="kill_job">
-        <message>Job failed</message>
+	<message>Python action failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
     </kill>
 
     <end name="end"/>

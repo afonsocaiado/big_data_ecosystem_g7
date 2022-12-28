@@ -105,9 +105,7 @@
 		
         <exec>python</exec> <!-- python2 if necessary -->
         <argument>-m</argument>
-        <argument>create_index</argument>
-        <argument>arg2</argument>
-        <argument>arg3</argument>
+        <argument>scrapper</argument>
         <env-var>PYTHONPATH=pyBundle</env-var>
         <file>my_python_dist.zip#pyBundle</file>
     </shell>

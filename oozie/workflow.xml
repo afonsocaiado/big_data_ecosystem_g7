@@ -96,11 +96,9 @@
         <shell xmlns="uri:oozie:shell-action:0.2">
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>		
-            <exec>python</exec> <!-- python2 if necessary -->
-            <argument>-m</argument>
-            <argument>scrapper</argument>
-            <env-var>PYTHONPATH=pyBundle</env-var>
-            <file>my_python_dist.zip#pyBundle</file>
+            <exec>scrapper.py</exec>
+			<file>scripts/scrapper.py</file> 	
+            <capture-output/>
         </shell>
         <ok to="end"/>
         <error to="kill_job"/>

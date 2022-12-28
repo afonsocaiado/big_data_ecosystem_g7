@@ -1,116 +1,122 @@
-  <!--
+<!--
 <workflow-app xmlns="uri:oozie:workflow:0.4" name="drivers_ingestion">
-  <global>
-    <job-tracker>${jobTracker}</job-tracker>
-    <name-node>${nameNode}</name-node>
-  </global>
+<global>
+  <job-tracker>${jobTracker}</job-tracker>
+  <name-node>${nameNode}</name-node>
+</global>
 
-  <credentials>
-    <credential name="hive-creds" type="hive2">
-      <property>
-        <name>hive2.server.principal</name>
-        <value>${hivePrincipal}</value>
-      </property>
-      <property>
-        <name>hive2.jdbc.url</name>
-        <value>${jdbcUrl}</value>
-      </property>
-    </credential>
-  </credentials>
+<credentials>
+  <credential name="hive-creds" type="hive2">
+    <property>
+      <name>hive2.server.principal</name>
+      <value>${hivePrincipal}</value>
+    </property>
+    <property>
+      <name>hive2.jdbc.url</name>
+      <value>${jdbcUrl}</value>
+    </property>
+  </credential>
+</credentials>
 
-  <start to="create_csv_table" />
+<start to="create_csv_table" />
 
 
-    Some HDFS actions could be done bebore.
-    For example, you can consider that the file is added to a transit zone in a folder with today's date as name.
-    You need to move/copy it to the csv table folder.
-  
+  Some HDFS actions could be done bebore.
+  For example, you can consider that the file is added to a transit zone in a folder with today's date as name.
+  You need to move/copy it to the csv table folder.
 
-  <action name="create_csv_table" cred="hive-creds">
-    <hive2 xmlns="uri:oozie:hive2-action:0.2">
-      <jdbc-url>${jdbcUrl}</jdbc-url>
-      <script>scripts/create_drivers_ext.hql</script>
-      <param>hiveUsername=${hiveUsername}</param>
-      <param>clusterUsername=${clusterUsername}</param>
-      <param>group=${group}</param>
-    </hive2>
-    <ok to="create_orc_table" />
-    <error to="kill_job" />
-  </action>
 
-  <action name="create_orc_table" cred="hive-creds">
-    <hive2 xmlns="uri:oozie:hive2-action:0.2">
-      <jdbc-url>${jdbcUrl}</jdbc-url>
-      <script>scripts/create_drivers_orc.hql</script>
-      <param>hiveUsername=${hiveUsername}</param>
-      <param>clusterUsername=${clusterUsername}</param>
-      <param>group=${group}</param>
-    </hive2>
-    <ok to="insert_orc_table" />
-    <error to="kill_job" />
-  </action>
+<action name="create_csv_table" cred="hive-creds">
+  <hive2 xmlns="uri:oozie:hive2-action:0.2">
+    <jdbc-url>${jdbcUrl}</jdbc-url>
+    <script>scripts/create_drivers_ext.hql</script>
+    <param>hiveUsername=${hiveUsername}</param>
+    <param>clusterUsername=${clusterUsername}</param>
+    <param>group=${group}</param>
+  </hive2>
+  <ok to="create_orc_table" />
+  <error to="kill_job" />
+</action>
 
-  <action name="insert_orc_table" cred="hive-creds">
-    <hive2 xmlns="uri:oozie:hive2-action:0.2">
-      <jdbc-url>${jdbcUrl}</jdbc-url>
-      <script>scripts/insert_drivers_orc.hql</script>
-      <param>hiveUsername=${hiveUsername}</param>
-      <param>clusterUsername=${clusterUsername}</param>
-      <param>group=${group}</param>
-    </hive2>
-    <ok to="end" />
-    <error to="kill_job" />
-  </action>
+<action name="create_orc_table" cred="hive-creds">
+  <hive2 xmlns="uri:oozie:hive2-action:0.2">
+    <jdbc-url>${jdbcUrl}</jdbc-url>
+    <script>scripts/create_drivers_orc.hql</script>
+    <param>hiveUsername=${hiveUsername}</param>
+    <param>clusterUsername=${clusterUsername}</param>
+    <param>group=${group}</param>
+  </hive2>
+  <ok to="insert_orc_table" />
+  <error to="kill_job" />
+</action>
 
-  <kill name="kill_job">
-    <message>Job failed</message>
-  </kill>
+<action name="insert_orc_table" cred="hive-creds">
+  <hive2 xmlns="uri:oozie:hive2-action:0.2">
+    <jdbc-url>${jdbcUrl}</jdbc-url>
+    <script>scripts/insert_drivers_orc.hql</script>
+    <param>hiveUsername=${hiveUsername}</param>
+    <param>clusterUsername=${clusterUsername}</param>
+    <param>group=${group}</param>
+  </hive2>
+  <ok to="end" />
+  <error to="kill_job" />
+</action>
 
-  <end name="end" />
+<kill name="kill_job">
+  <message>Job failed</message>
+</kill>
+
+<end name="end" />
 </workflow-app>
 -->
 
 <workflow-app xmlns="uri:oozie:workflow:0.4" name="reddit_scrapping">
-  <global>
-    <job-tracker>${jobTracker}</job-tracker>
-    <name-node>${nameNode}</name-node>
-  </global>
-   
-  <credentials>
-    <credential name="hive-creds" type="hive2">
-      <property>
-        <name>hive2.server.principal</name>
-        <value>${hivePrincipal}</value>
-      </property>
-      <property>
-        <name>hive2.jdbc.url</name>
-        <value>${jdbcUrl}</value>
-      </property>
-    </credential>
-  </credentials>
-  
-  
-  <start to="scrap_to_file" />
+    <global>
+        <job-tracker>${jobTracker}</job-tracker>
+        <name-node>${nameNode}</name-node>
+    </global>
 
-  <action name="scrap_to_file">
-      <shell xmlns="uri:oozie:shell-action:0.2">
-        <job-tracker>${clusterJobtracker}</job-tracker>
-        <name-node>${clusterNamenode}</name-node>
-        <configuration>
+    <credentials>
+        <credential name="hive-creds" type="hive2">
             <property>
-                <name>mapred.job.queue.name</name>
-                <value>${jobQueue}</value>
+                <name>hive2.server.principal</name>
+                <value>${hivePrincipal}</value>
             </property>
-        </configuration>
-		
-        <exec>python</exec> <!-- python2 if necessary -->
-        <argument>-m</argument>
-        <argument>scrapper</argument>
-        <env-var>PYTHONPATH=pyBundle</env-var>
-        <file>my_python_dist.zip#pyBundle</file>
-    </shell>
-    <ok to="end"/>  
-    <error to="kill_job" />
-  </action>
+            <property>
+                <name>hive2.jdbc.url</name>
+                <value>${jdbcUrl}</value>
+            </property>
+        </credential>
+    </credentials>
+
+
+    <start to="scrap_to_file"/>
+
+    <action name="scrap_to_file">
+        <shell xmlns="uri:oozie:shell-action:0.2">
+            <job-tracker>${clusterJobtracker}</job-tracker>
+            <name-node>${clusterNamenode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${jobQueue}</value>
+                </property>
+            </configuration>
+
+            <exec>python</exec> <!-- python2 if necessary -->
+            <argument>-m</argument>
+            <argument>scrapper</argument>
+            <env-var>PYTHONPATH=pyBundle</env-var>
+            <file>my_python_dist.zip#pyBundle</file>
+        </shell>
+        <ok to="end"/>
+        <error to="kill_job"/>
+    </action>
+
+    <kill name="kill_job">
+        <message>Job failed</message>
+    </kill>
+
+    <end name="end"/>
 
 </workflow-app>

@@ -93,6 +93,25 @@
   <start to="scrap_to_file" />
 
   <action name="scrap_to_file">
+      <shell xmlns="uri:oozie:shell-action:0.2">
+        <job-tracker>${clusterJobtracker}</job-tracker>
+        <name-node>${clusterNamenode}</name-node>
+        <configuration>
+            <property>
+                <name>mapred.job.queue.name</name>
+                <value>${jobQueue}</value>
+            </property>
+        </configuration>
+		
+        <exec>python</exec> <!-- python2 if necessary -->
+        <argument>-m</argument>
+        <argument>create_index</argument>
+        <argument>arg2</argument>
+        <argument>arg3</argument>
+        <env-var>PYTHONPATH=pyBundle</env-var>
+        <file>my_python_dist.zip#pyBundle</file>
+    </shell>
+    <ok to="end"/>  
     <error to="kill_job" />
   </action>
 

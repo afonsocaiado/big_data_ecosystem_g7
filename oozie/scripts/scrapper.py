@@ -22,7 +22,7 @@
 
 
 print("HELLO")
-with open('HELLOO.txt', 'x') as f:
+with open('HELL.txt', 'x') as f:
     f.write('Create a new text file!')
 
 #with open('hdfs://au/user/pk.stradomski-ece/oozie/HELLOO.txt', 'x') as f:

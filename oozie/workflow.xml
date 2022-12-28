@@ -95,9 +95,14 @@
     <action name="scrap_to_file">
         <shell xmlns="uri:oozie:shell-action:0.2">
             <job-tracker>${jobTracker}</job-tracker>
-            <name-node>${nameNode}</name-node>		
-            <exec>python</exec>
-			<file>hdfs://au/user/${clusterUsername}/oozie/scripts/scrapper.py</file>
+            <name-node>${nameNode}</name-node>
+			<configuration>
+                <property>
+                  <name>mapred.job.queue.name</name>
+                  <value>${queueName}</value>
+                </property>
+            </configuration>
+            <exec>script.sh</exec>
             <capture-output/>
         </shell>
         <ok to="end"/>

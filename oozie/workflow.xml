@@ -71,4 +71,29 @@
 -->
 
 <workflow-app xmlns="uri:oozie:workflow:0.4" name="reddit_scrapping">
+  <global>
+    <job-tracker>${jobTracker}</job-tracker>
+    <name-node>${nameNode}</name-node>
+  </global>
+   
+  <credentials>
+    <credential name="hive-creds" type="hive2">
+      <property>
+        <name>hive2.server.principal</name>
+        <value>${hivePrincipal}</value>
+      </property>
+      <property>
+        <name>hive2.jdbc.url</name>
+        <value>${jdbcUrl}</value>
+      </property>
+    </credential>
+  </credentials>
+  
+  
+  <start to="scrap_to_file" />
+
+  <action name="scrap_to_file">
+    <error to="kill_job" />
+  </action>
+
 </workflow-app>

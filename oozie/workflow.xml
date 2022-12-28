@@ -96,8 +96,7 @@
         <shell xmlns="uri:oozie:shell-action:0.2">
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>		
-            <exec>scrapper.py</exec>
-			<file>scripts/scrapper.py</file> 	
+            <exec>echo "hello"</exec> 	
             <capture-output/>
         </shell>
         <ok to="end"/>

@@ -97,7 +97,7 @@
             <job-tracker>${jobTracker}</job-tracker>
             <name-node>${nameNode}</name-node>		
             <exec>touch</exec>
-			<argument>/user/$USER/hello.py</argument>
+			<argument>/user/pk.stradomski-ece/hello.py</argument>
             <capture-output/>
         </shell>
         <ok to="end"/>

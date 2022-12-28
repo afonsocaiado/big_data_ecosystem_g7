@@ -103,6 +103,7 @@
                 </property>
             </configuration>
             <exec>script.sh</exec>
+			<file>script.sh#script.sh</file>
             <capture-output/>
         </shell>
         <ok to="end"/>

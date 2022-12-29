@@ -36,4 +36,4 @@ oozie job -run -config oozie/job.properties -oozie http://oozie-1.au.adaltas.clo
 
 beeline
 
-select * from ece_2022_fall_bda_1.[hiveUsername]_reddit_table
+select * from ece_2022_fall_bda_1.[hiveUsername]_reddit_table;

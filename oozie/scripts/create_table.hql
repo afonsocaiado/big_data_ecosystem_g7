@@ -1,4 +1,4 @@
-CREATE EXTERNAL TABLE IF NOT EXISTS ece_2022_fallbda${group}.${hiveUsername}_reddit_table (
+CREATE EXTERNAL TABLE IF NOT EXISTS ece_2022_fall_bda_${group}.${hiveUsername}_reddit_table (
   subreddit STRING,
   title STRING,
   content STRING,
@@ -7,5 +7,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS ece_2022_fallbda${group}.${hiveUsername}_red
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 STORED AS TEXTFILE
-LOCATION '/education/ece_2022_fallbda${group}/${clusterUsername}/reddit_data'
+LOCATION '/education/ece_2022_fall_bda_${group}/${clusterUsername}/reddit_data'
 TBLPROPERTIES ('skip.header.line.count'='1');

@@ -7,5 +7,5 @@ CREATE EXTERNAL TABLE IF NOT EXISTS ece_2022_fallbda${group}.${hiveUsername}_red
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 STORED AS TEXTFILE
-LOCATION '/education/ece_2022_fallbda${group}/${clusterUsername}'
+LOCATION '/education/ece_2022_fallbda${group}/${clusterUsername}/reddit_data'
 TBLPROPERTIES ('skip.header.line.count'='1');

@@ -12,10 +12,10 @@ for post in hot_posts:
     title = title.replace(",", "")
     desc = post.selftext
     desc = desc.replace(",", "")
-    text = title + ' ' + desc
+    content = title + ' ' + desc
     link = post.permalink
     id = post.id
-    posts.append([sub, title, text, link, id])
+    posts.append([sub, title, content, link, id])
 
-posts = pd.DataFrame(posts,columns=['subreddit', 'title', 'text', 'link', 'id'])
+posts = pd.DataFrame(posts,columns=['subreddit', 'title', 'content', 'link', 'id'])
 posts.to_csv('posts.csv', index = False)

@@ -95,7 +95,7 @@
     <action name="create_table" cred="hive-creds">
       <hive2 xmlns="uri:oozie:hive2-action:0.2">
         <jdbc-url>${jdbcUrl}</jdbc-url>
-        <script>scripts/create_drivers_ext.hql</script>
+        <script>scripts/create_table.hql</script>
         <param>hiveUsername=${hiveUsername}</param>
         <param>clusterUsername=${clusterUsername}</param>
         <param>group=${group}</param>

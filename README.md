@@ -35,4 +35,5 @@ oozie job -run -config oozie/job.properties -oozie http://oozie-1.au.adaltas.clo
 8. Check the contents of the table (the name of the table changes with Hive username:
 
 beeline
+
 select * from ece_2022_fall_bda_1.[hiveUsername]_reddit_table

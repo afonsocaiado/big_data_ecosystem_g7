@@ -1,8 +1,11 @@
 # Reddit Data Pipeline
+[![Python 3.6+](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/release/python-360/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## 📋 Overview
 
 A comprehensive data pipeline that scrapes content from Reddit, processes it using Python, and loads it into a Hadoop ecosystem for analysis with Hive.
 
-## Overview
+## 🔍 Project Description
 
 This project implements an end-to-end data pipeline that:
 1. Scrapes posts from popular subreddits (r/MachineLearning, r/AskHistorians, r/philosophy)
@@ -10,7 +13,7 @@ This project implements an end-to-end data pipeline that:
 3. Loads it into HDFS (Hadoop Distributed File System)
 4. Creates and populates a Hive table using an Oozie workflow
 
-## Architecture
+### 🏗️ Architecture
 
 ```
 +-------------+      +------------+      +------------+      +------------+
@@ -25,7 +28,14 @@ This project implements an end-to-end data pipeline that:
                                          +------------+
 ```
 
-## Technologies Used
+## 🧑‍💻 Project Team
+
+- Afonso Maria Rebordão Caiado de Sousa
+- Lucas Manchado Marcos
+- Patryk Stradomski
+- Simona Cardinale
+
+## 🔧 Technologies Used
 
 - **Python**: Data collection and preprocessing
   - PRAW (Python Reddit API Wrapper)
@@ -35,7 +45,7 @@ This project implements an end-to-end data pipeline that:
   - Hive for SQL-like querying
   - Oozie for workflow orchestration
 
-## Project Structure
+## 🗂️ Repository Structure
 
 ```
 .
@@ -48,7 +58,7 @@ This project implements an end-to-end data pipeline that:
 └── README.md            # Project documentation
 ```
 
-## Setup and Installation
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -69,7 +79,7 @@ This project implements an end-to-end data pipeline that:
    pip install praw pandas
    ```
 
-## Usage
+## 📚 Usage
 
 ### 1. Data Collection
 
@@ -119,18 +129,11 @@ beeline
 SELECT * FROM ece_2022_fall_bda_1.[hiveUsername]_reddit_table;
 ```
 
-## Contributors
-
-- Afonso Maria Rebordão Caiado de Sousa
-- Lucas Manchado Marcos
-- Patryk Stradomski
-- Simona Cardinale
-
-## License
-
-[MIT License](https://opensource.org/licenses/MIT)
-
-## Acknowledgements
+## 🔗 Acknowledgements
 
 - Reddit API for providing access to post data
 - Adaltas Cloud for the Hadoop cluster infrastructure
+
+## 📄 License
+
+[MIT License](https://opensource.org/licenses/MIT)
